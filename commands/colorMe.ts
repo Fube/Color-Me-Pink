@@ -29,7 +29,6 @@ const colorMe = new Command(
             const memberRoles = (await member.fetch(true)).roles;
 
             const maxBotRolePosition = Math.max(...message.guild.members.cache.find(n => n.id === client.user.id).roles.cache.map(n => n.position));
-
             let maxPosition = 0;
 
             for(const [_, role] of memberRoles.cache){
@@ -55,7 +54,7 @@ const colorMe = new Command(
                 
                     name: color,
                     color: color,
-                    position: maxPosition + 1,
+                    position: maxPosition + Number(maxPosition >= maxBotRolePosition),
                     hoist: true,
                     mentionable: false,
                 }
