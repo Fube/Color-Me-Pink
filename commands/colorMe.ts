@@ -27,7 +27,11 @@ const colorMe = new Command(
             const { member } = message;
             const memberRoles = (await member.fetch(true)).roles;
 
+            let maxPosition = 0;
+
             for(const [_, role] of memberRoles.cache){
+
+                maxPosition = Math.max(maxPosition, role.position);
             
                 if(isValidHex(role.name)){
 
@@ -48,6 +52,7 @@ const colorMe = new Command(
                 
                     name: color,
                     color: color,
+                    position: maxPosition + 1,
                     hoist: true,
                     mentionable: false,
                 }

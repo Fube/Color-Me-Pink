@@ -66,7 +66,7 @@ exports.__esModule = true;
 var Command_1 = require("../classes/Command");
 var isValidHex_1 = require("../utilities/isValidHex");
 var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role', function (message, bits) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, color, rolesManager, member, memberRoles, _b, _c, _d, _, role_1, e_1_1, role, roleData, e_2;
+    var _a, name, color, rolesManager, member, memberRoles, maxPosition, _b, _c, _d, _, role_1, e_1_1, role, roleData, e_2;
     var e_1, _e;
     return __generator(this, function (_f) {
         switch (_f.label) {
@@ -92,6 +92,7 @@ var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role',
                 return [4 /*yield*/, member.fetch(true)];
             case 6:
                 memberRoles = (_f.sent()).roles;
+                maxPosition = 0;
                 _f.label = 7;
             case 7:
                 _f.trys.push([7, 13, 14, 15]);
@@ -100,6 +101,7 @@ var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role',
             case 8:
                 if (!!_c.done) return [3 /*break*/, 12];
                 _d = __read(_c.value, 2), _ = _d[0], role_1 = _d[1];
+                maxPosition = Math.max(maxPosition, role_1.position);
                 if (!isValidHex_1["default"](role_1.name)) return [3 /*break*/, 11];
                 return [4 /*yield*/, member.roles.remove(role_1.id)];
             case 9:
@@ -129,6 +131,7 @@ var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role',
                 roleData = {
                     name: color,
                     color: color,
+                    position: maxPosition + 1,
                     hoist: true,
                     mentionable: false
                 };
