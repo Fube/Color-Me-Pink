@@ -63,6 +63,7 @@ var __values = (this && this.__values) || function(o) {
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 exports.__esModule = true;
+exports.client = void 0;
 var dotenv = require("dotenv");
 dotenv.config();
 var discord_js_1 = require("discord.js");
@@ -71,8 +72,8 @@ var _a = process.env, BOT_TOKEN = _a.BOT_TOKEN, PREFIX = _a.PREFIX, COMMAND_OK =
 var commands = new Map([
     ['colorMe', colorMe_1["default"]],
 ]);
-var client = new discord_js_1.Client();
-client.on('message', function (message) { return __awaiter(void 0, void 0, void 0, function () {
+exports.client = new discord_js_1.Client();
+exports.client.on('message', function (message) { return __awaiter(void 0, void 0, void 0, function () {
     var cleanedMessage, bits, _a, commandName, command, commands_1, commands_1_1, _b, name_1, innerCommand;
     var e_1, _c;
     return __generator(this, function (_d) {
@@ -121,5 +122,5 @@ client.on('message', function (message) { return __awaiter(void 0, void 0, void 
         }
     });
 }); });
-client.on('ready', function () { return console.log('LMG MOUNTED N LOADED'); });
-client.login(BOT_TOKEN);
+exports.client.on('ready', function () { return console.log('LMG MOUNTED N LOADED'); });
+exports.client.login(BOT_TOKEN);

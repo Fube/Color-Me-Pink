@@ -1,6 +1,7 @@
 import { Role, RoleData } from 'discord.js';
 import Command from '../classes/Command';
 import isValidHex from '../utilities/isValidHex';
+import { client } from '../index';
 
 const colorMe = new Command(
     'colorMe',
@@ -27,11 +28,13 @@ const colorMe = new Command(
             const { member } = message;
             const memberRoles = (await member.fetch(true)).roles;
 
+            const maxBotRolePosition = Math.max(...message.guild.members.cache.find(n => n.id === client.user.id).roles.cache.map(n => n.position));
+
             let maxPosition = 0;
 
             for(const [_, role] of memberRoles.cache){
 
-                maxPosition = Math.max(maxPosition, role.position);
+                maxPosition = role.position < maxBotRolePosition && Math.max(maxPosition, role.position);
             
                 if(isValidHex(role.name)){
 

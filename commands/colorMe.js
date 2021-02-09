@@ -51,6 +51,10 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
+var __spread = (this && this.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
 var __values = (this && this.__values) || function(o) {
     var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
@@ -65,8 +69,9 @@ var __values = (this && this.__values) || function(o) {
 exports.__esModule = true;
 var Command_1 = require("../classes/Command");
 var isValidHex_1 = require("../utilities/isValidHex");
+var index_1 = require("../index");
 var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role', function (message, bits) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, color, rolesManager, member, memberRoles, maxPosition, _b, _c, _d, _, role_1, e_1_1, role, roleData, e_2;
+    var _a, name, color, rolesManager, member, memberRoles, maxBotRolePosition, maxPosition, _b, _c, _d, _, role_1, e_1_1, role, roleData, e_2;
     var e_1, _e;
     return __generator(this, function (_f) {
         switch (_f.label) {
@@ -92,6 +97,7 @@ var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role',
                 return [4 /*yield*/, member.fetch(true)];
             case 6:
                 memberRoles = (_f.sent()).roles;
+                maxBotRolePosition = Math.max.apply(Math, __spread(message.guild.members.cache.find(function (n) { return n.id === index_1.client.user.id; }).roles.cache.map(function (n) { return n.position; })));
                 maxPosition = 0;
                 _f.label = 7;
             case 7:
@@ -101,7 +107,7 @@ var colorMe = new Command_1["default"]('colorMe', ['cm'], 'Adds a colored role',
             case 8:
                 if (!!_c.done) return [3 /*break*/, 12];
                 _d = __read(_c.value, 2), _ = _d[0], role_1 = _d[1];
-                maxPosition = Math.max(maxPosition, role_1.position);
+                maxPosition = role_1.position < maxBotRolePosition && Math.max(maxPosition, role_1.position);
                 if (!isValidHex_1["default"](role_1.name)) return [3 /*break*/, 11];
                 return [4 /*yield*/, member.roles.remove(role_1.id)];
             case 9:

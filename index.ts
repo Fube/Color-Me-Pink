@@ -16,7 +16,7 @@ const commands : Map<string, Command> = new Map([
     ['colorMe', colorMe],
 ]);
 
-const client = new Client();
+export const client = new Client();
 client.on('message', async (message:Message) => {
 
      // Check to see if the message is mine
