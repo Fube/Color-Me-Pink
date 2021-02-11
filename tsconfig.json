@@ -4,7 +4,6 @@
         "rootDir": ".",
         "outDir": "./build",
         "downlevelIteration": true,
-        "module": "system",
         "moduleResolution": "node"
     }
 }
