@@ -9,12 +9,12 @@ const colorMe = new Command(
     'Adds a colored role',
     async (message, bits) => {
 
-        if(bits.length !== 2){
+        if(bits.length < 2){
             await message.reply('Too little or too many args')
             return false;
         }
         
-        const [ name, color ] = bits;
+        let [ name, color, roleName ] = bits;
 
         if(!isValidHex(color)){
             await message.reply('Invalid hex code');
@@ -52,7 +52,7 @@ const colorMe = new Command(
 
                 const roleData : RoleData = {
                 
-                    name: color,
+                    name: roleName ?? color,
                     color: color,
                     position: maxPosition + Number(maxPosition >= maxBotRolePosition),
                     hoist: true,
