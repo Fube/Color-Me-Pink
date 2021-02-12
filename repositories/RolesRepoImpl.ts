@@ -1,4 +1,4 @@
-import { IRole, Role } from "../entities/Role";
+import { IRole, IRoleResolvable, Role } from "../entities/Role";
 import RolesRepository from "./RolesRepo";
 
 export default class RoleRepoImpl implements RolesRepository {
@@ -8,6 +8,18 @@ export default class RoleRepoImpl implements RolesRepository {
 
         const obj = await Role.findByPk(id);
         return obj.get();
+    }
+
+    
+    public async findOne(role:IRoleResolvable){
+
+        const obj = await Role.findOne({
+            where: {
+                ...role,
+            }
+        });
+
+        return obj && obj.get();
     }
 
     public async add(role:IRole){

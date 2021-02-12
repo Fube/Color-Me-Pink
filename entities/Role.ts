@@ -43,3 +43,10 @@ export interface IRole {
     roleId: string,
     guildId: string,
 }
+
+export interface IRoleResolvable {
+
+    userId: string,
+    roleId?: string,
+    guildId?: string,
+}
