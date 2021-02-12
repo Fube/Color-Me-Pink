@@ -4,12 +4,19 @@ dotenv.config();
 import { Client, Message } from 'discord.js';
 import Command from './classes/Command';
 import colorMe from './commands/colorMe';
+import { Sequelize } from 'sequelize';
+import RoleRepoImpl from './repositories/RolesRepoImpl';
+import { Role } from './entities/Role';
 
 const {
     BOT_TOKEN,
     PREFIX,
     COMMAND_OK,
     COMMAND_NOT_OK,
+    DB_HOST,
+    DB_NAME,
+    DB_UNAME,
+    DB_PASS,
 } = process.env;
 
 const commands : Map<string, Command> = new Map([
