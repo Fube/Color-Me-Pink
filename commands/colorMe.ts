@@ -14,7 +14,7 @@ const colorMe = new Command(
             return false;
         }
         
-        let [ name, color, roleName ] = bits;
+        let [ name, color, ...roleName ] = bits;
 
         if(!isValidHex(color)){
             await message.reply('Invalid hex code');
@@ -54,7 +54,7 @@ const colorMe = new Command(
                 
                     name: roleName ?? color,
                     color: color,
-                    position: maxPosition + Number(maxPosition >= maxBotRolePosition),
+                    position: maxPosition + Number(maxPosition <= maxBotRolePosition),
                     hoist: true,
                     mentionable: false,
                 }
