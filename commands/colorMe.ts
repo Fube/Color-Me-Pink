@@ -52,7 +52,7 @@ const colorMe = new Command(
 
                 const roleData : RoleData = {
                 
-                    name: roleName.length >= 0 ? roleName.join('') : color,
+                    name: roleName.length >= 0 ? roleName.join(' ') : color,
                     color: color,
                     position: maxPosition + Number(maxPosition <= maxBotRolePosition),
                     hoist: true,
