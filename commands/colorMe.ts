@@ -3,9 +3,7 @@ import Command from '../classes/Command';
 import isValidHex from '../utilities/isValidHex';
 import { client } from '../index';
 import { IRole } from '../entities/Role';
-import RoleRepoImpl from '../repositories/RolesRepoImpl';
-
-const roleRepo = new RoleRepoImpl();
+import { roleRepo } from '../implementations';
 
 const colorMe = new Command(
     'colorMe',

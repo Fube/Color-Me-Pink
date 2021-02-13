@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "lib": ["es5", "es6"],
+        "target": "ESNext",
         "rootDir": ".",
         "outDir": "./build",
         "downlevelIteration": true,

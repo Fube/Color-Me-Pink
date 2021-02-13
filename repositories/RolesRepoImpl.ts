@@ -11,7 +11,7 @@ export default class RoleRepoImpl implements RolesRepository {
     }
 
     
-    public async findOne(role:IRoleResolvable){
+    public async findOne(role:IRoleResolvable): Promise<IRole>{
 
         const obj = await Role.findOne({
             where: {
