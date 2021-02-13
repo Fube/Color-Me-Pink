@@ -5,6 +5,7 @@
         "rootDir": ".",
         "outDir": "./build",
         "downlevelIteration": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
     }
 }

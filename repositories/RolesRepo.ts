@@ -1,4 +1,3 @@
-import { Model } from "sequelize/types";
 import { IRole, IRoleResolvable, Role } from "../entities/Role";
 
 export default interface RolesRepository {
