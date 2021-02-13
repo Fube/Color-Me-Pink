@@ -1,4 +1,3 @@
-import { Role } from 'discord.js';
 import { roleRepo } from '../implementations';
 import { client } from '../index';
 import arrayDiff from '../utilities/arrayDiff';
