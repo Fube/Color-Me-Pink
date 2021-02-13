@@ -8,7 +8,11 @@ const {
     BOT_TOKEN,
 } = process.env;
 
-export const client = new Client();
+export const client = new Client({ 
+    ws: { 
+        intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] 
+    } 
+});
 
 // Hook up event listeners
 eventListeners.forEach(
