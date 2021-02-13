@@ -10,6 +10,7 @@ const {
 
 export const client = new Client();
 
+// Hook up event listeners
 eventListeners.forEach(
     ({ event, listener }) => client.on(event, listener)
 );
