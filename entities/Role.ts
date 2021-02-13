@@ -47,7 +47,7 @@ export interface IRole {
 
 export interface IRoleResolvable {
 
-    userId: string,
+    userId?: string,
     roleId?: string,
     guildId?: string,
 }
