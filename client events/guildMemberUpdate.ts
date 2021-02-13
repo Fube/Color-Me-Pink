@@ -2,7 +2,7 @@ import ClientEventListener from '../classes/ClientEventListener';
 import { roleRepo } from '../implementations';
 import arrayDiff from '../utilities/arrayDiff';
 
-const guildMemberUpdate = new ClientEventListener(
+export const syncWithDB = new ClientEventListener(
     
     'guildMemberUpdate', 
     async (past, present) => {
@@ -29,5 +29,3 @@ const guildMemberUpdate = new ClientEventListener(
         await roleRepo.deleteOne({ userId: present.id, roleId, guildId: present.guild.id });
     }
 );
-
-export default guildMemberUpdate;

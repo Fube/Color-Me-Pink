@@ -8,7 +8,7 @@ const {
     COMMAND_NOT_OK,
 } = process.env;
 
-const messageListener = new ClientEventListener(
+export const commandCaller = new ClientEventListener(
 
     'message',
     async (message:Message) => {
@@ -41,5 +41,3 @@ const messageListener = new ClientEventListener(
         }
     }
 );
-
-export default messageListener;
