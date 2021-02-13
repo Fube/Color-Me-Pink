@@ -26,6 +26,7 @@ export const Role = sequelize.define('Role',
             type: DataTypes.STRING,
             allowNull: false,
             unique: false,
+            primaryKey: true,
             field: 'guild_id'
         },
     },

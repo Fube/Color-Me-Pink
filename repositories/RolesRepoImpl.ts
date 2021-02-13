@@ -44,11 +44,30 @@ export default class RoleRepoImpl implements RolesRepository {
         }
     }
 
-    public async deleteOne(role:IRole){
+    public async deleteOneById(id:string){
 
         try{
 
-            (await Role.findByPk(role.userId)).destroy();
+            (await Role.findByPk(id)).destroy();
+            return true;
+        }
+        catch{
+            return false;
+        }
+    }
+
+    public async deleteOne(role:IRoleResolvable){
+
+        try{
+
+            const obj = await Role.findOne({
+                where: {
+                    ...role,
+                }
+            });
+
+            await obj.destroy();
+
             return true;
         }
         catch{

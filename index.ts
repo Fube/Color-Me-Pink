@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import { Client } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import eventListeners from './client events';
 
 const {
@@ -10,13 +10,13 @@ const {
 
 export const client = new Client({ 
     ws: { 
-        intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] 
+        intents: Intents.ALL
     } 
 });
 
 // Hook up event listeners
 eventListeners.forEach(
-    ({ event, listener }) => (console.log(event), client.on(event, listener))
+    ({ event, listener }) => client.on(event, listener)
 );
 
 client.on('ready', () => console.log('LMG MOUNTED N LOADED'));
