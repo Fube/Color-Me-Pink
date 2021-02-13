@@ -12,7 +12,7 @@ export const client = new Client();
 
 // Hook up event listeners
 eventListeners.forEach(
-    ({ event, listener }) => client.on(event, listener)
+    ({ event, listener }) => (console.log(event), client.on(event, listener))
 );
 
 client.on('ready', () => console.log('LMG MOUNTED N LOADED'));

@@ -7,6 +7,14 @@ export const syncWithDB = new ClientEventListener(
     'guildMemberUpdate', 
     async (past, present) => {
 
+        await Promise.all([
+            past.fetch(true),
+            present.fetch(true),
+        ]);
+
+        console.log('Checking for change in roles...')
+        if(past.roles.cache.size === present.roles.cache.size)return; // There has been no update in roles. Ignore.
+
         console.log('Checking if role is in DB...')
         const isInDb:boolean = await roleRepo.findOne({ userId: present.id, guildId: present.guild.id }) !== null;
         if(!isInDb)return; // Guild memeber is not a user
