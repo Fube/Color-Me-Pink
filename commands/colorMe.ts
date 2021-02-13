@@ -32,7 +32,8 @@ const colorMe = new Command(
             const memberRoles = (await member.fetch(true)).roles;
 
             // Find the bot's highest assigned role to make sure the bot isn't trying to assign a role higher than it can
-            const maxBotRolePosition = Math.max(...message.guild.members.cache.find(n => n.id === client.user.id).roles.cache.map(n => n.position));
+            const maxBotRolePosition = message.guild.members.cache.find(n => n.id === client.user.id).roles.highest.position;
+            
             let maxPosition = 0;
 
             // Find the user's highest assigned role to know where the new role should be situated
